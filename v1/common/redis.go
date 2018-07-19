@@ -4,7 +4,8 @@ import (
 	"time"
 
 	"github.com/ehengao/machinery/v1/config"
-	"github.com/gomodule/redigo/redis"
+	// "github.com/gomodule/redigo/redis"
+	"github.com/garyburd/redigo/redis"
 )
 
 var (

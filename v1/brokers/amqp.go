@@ -369,12 +369,7 @@ func (b *AMQPBroker) consumeOne(delivery amqp.Delivery, taskProcessor TaskProces
 					s.GroupUUID = headers.Group
 					s.Headers = tasks.Headers(delivery.Headers)
 					if s.UUID == "" {
-						taskID, e := uuid.NewV4()
-						if e != nil {
-							delivery.Nack(multiple, requeue)
-							return NewErrCouldNotUnmarshaTaskSignature(delivery.Body, e)
-						}
-
+						taskID := uuid.NewV4()
 						s.UUID = fmt.Sprintf("%v", taskID)
 					}
 					if s.ReplyTo == "" {
@@ -397,12 +392,7 @@ func (b *AMQPBroker) consumeOne(delivery amqp.Delivery, taskProcessor TaskProces
 					s.GroupUUID = headers.Group
 					s.Headers = tasks.Headers(delivery.Headers)
 					if s.UUID == "" {
-						taskID, e := uuid.NewV4()
-						if e != nil {
-							delivery.Nack(multiple, requeue)
-							return NewErrCouldNotUnmarshaTaskSignature(delivery.Body, e)
-						}
-
+						taskID := uuid.NewV4()
 						s.UUID = fmt.Sprintf("%v", taskID)
 					}
 					if s.ReplyTo == "" {

@@ -195,11 +195,7 @@ func send() error {
 	span, ctx := opentracing.StartSpanFromContext(context.Background(), "send")
 	defer span.Finish()
 
-	batchUUID, err := uuid.NewV4()
-
-	if err != nil {
-		return fmt.Errorf("Error generating batch id: %s", err.Error())
-	}
+	batchUUID := uuid.NewV4()
 
 	batchID := batchUUID.String()
 	span.SetBaggageItem("batch.id", batchID)

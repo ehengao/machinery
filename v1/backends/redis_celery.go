@@ -12,7 +12,8 @@ import (
 	"github.com/ehengao/machinery/v1/config"
 	"github.com/ehengao/machinery/v1/log"
 	"github.com/ehengao/machinery/v1/tasks"
-	"github.com/gomodule/redigo/redis"
+	"github.com/garyburd/redigo/redis"
+	// "github.com/gomodule/redigo/redis"
 )
 
 // RedisCeleryBackend represents a Redis result backend

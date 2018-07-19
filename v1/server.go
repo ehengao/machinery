@@ -151,11 +151,7 @@ func (server *Server) SendTask(signature *tasks.Signature) (*backends.AsyncResul
 	// Auto generate a UUID if not set already
 	if signature.UUID == "" {
 
-		taskID, err := uuid.NewV4()
-
-		if err != nil {
-			return nil, fmt.Errorf("Error generating task id: %s", err.Error())
-		}
+		taskID := uuid.NewV4()
 
 		signature.UUID = fmt.Sprintf("task_%v", taskID)
 	}
