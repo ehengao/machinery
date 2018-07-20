@@ -36,3 +36,14 @@ test-with-coverage:
 
 ci:
 	bash -c 'docker-compose -f docker-compose.test.yml -p machinery_ci up --build --abort-on-container-exit --exit-code-from sut'
+
+install:
+	go install example/machinery_v2.go
+
+run:
+	go install example/machinery_v2.go
+	machinery_v2 -c example/config.yml worker
+
+ci-run:
+	go install example/machinery_v2.go
+	machinery_v2 -c example/config_ci.yml worker
